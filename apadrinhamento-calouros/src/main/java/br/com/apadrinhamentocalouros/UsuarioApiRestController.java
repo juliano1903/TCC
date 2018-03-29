@@ -1,17 +1,27 @@
-//package br.com.apadrinhamentocalouros;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@RestController
-//public class LanceApiRestController {
-//	
+package br.com.apadrinhamentocalouros;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.apadrinhamentocalouros.model.Usuario;
+import br.com.apadrinhamentocalouros.service.UsuarioService;
+
+@RestController
+@RequestMapping(value = "/v1/usuario")
+public class UsuarioApiRestController {
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
+  @RequestMapping(value = "/pendentes-aceite", method = RequestMethod.GET, produces = "application/json")
+  public Iterable<Usuario> findUsuariosPendentesDeAceite() {
+	  return usuarioService.findUsuariosPendentesDeAceite();
+  }
+	
+	
 //	@Autowired
 //	private LanceService lanceService;
 //	
@@ -45,4 +55,4 @@
 //    			.valorString(leilao.isFinalizado() || leilao.getTipoLance().idTipoLance == 2 ? leilao.getValorString() : "")
 //    			.build();
 //    }
-//}
+}
