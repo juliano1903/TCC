@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
+import br.com.apadrinhamentocalouros.utils.DateUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,17 +42,22 @@ public class Usuario {
 	@Column(name="SENHA")
 	public String senha;
 
-	@Column(name="DATA_ACEITE")
-	public LocalDate dataAceite;
+	@Column(name="DATA_ACEITE", columnDefinition = "DATE")
+	public Date dataAceite;
 
-	@Column(name="DATA_MATRICULA")
-	public LocalDate dataMatricula;
+	@Column(name="DATA_MATRICULA", columnDefinition = "DATE")
+	public Date dataMatricula;
 	
 	@Transient
 	public boolean calouro;
 	
+	@Transient
+	public String dsPerfil;
+	
 	public boolean isCalouro() {
 		LocalDate dataAtual = LocalDate.now();
-		return dataMatricula.isAfter(dataAtual.minusMonths(6));
+		calouro = DateUtils.dateToLocalDate(dataMatricula).isAfter(dataAtual.minusMonths(6));
+		dsPerfil = calouro ? "Calouro" : "Veterano";
+		return calouro;
 	}
 }

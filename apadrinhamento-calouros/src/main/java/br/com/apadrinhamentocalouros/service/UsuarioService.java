@@ -1,5 +1,7 @@
 package br.com.apadrinhamentocalouros.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	public Usuario save(Usuario usuario) {
+		if(usuario.isCalouro()) {
+			usuario.setDataAceite(new Date());
+		}
 		return usuarioRepository.save(usuario);
 	}
 	
