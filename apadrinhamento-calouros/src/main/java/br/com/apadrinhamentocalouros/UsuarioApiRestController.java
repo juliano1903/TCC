@@ -2,6 +2,9 @@ package br.com.apadrinhamentocalouros;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +22,11 @@ public class UsuarioApiRestController {
   @RequestMapping(value = "/pendentes-aceite", method = RequestMethod.GET, produces = "application/json")
   public Iterable<Usuario> findUsuariosPendentesDeAceite() {
 	  return usuarioService.findUsuariosPendentesDeAceite();
+  }
+  
+  @RequestMapping(value = "/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+  public Usuario salvaUsuario(@RequestBody Usuario usuario) {
+	  return usuarioService.save(usuario);
   }
 	
 	
