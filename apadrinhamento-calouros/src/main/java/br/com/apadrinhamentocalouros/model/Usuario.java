@@ -45,8 +45,14 @@ public class Usuario {
 	@Column(name="DATA_ACEITE", columnDefinition = "DATE")
 	public Date dataAceite;
 
+	@Column(name="DATA_NEGATIVA", columnDefinition = "DATE")
+	public Date dataNegativa;
+	
 	@Column(name="DATA_MATRICULA", columnDefinition = "DATE")
 	public Date dataMatricula;
+	
+	@Column(name="JUSTIFICATIVA_NEGATIVA")
+	public String justificativaNegativa;
 	
 	@Transient
 	public boolean calouro;

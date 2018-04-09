@@ -7,6 +7,6 @@ import br.com.apadrinhamentocalouros.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>  {
 
-	@Query("select u from Usuario u where u.dataAceite = null")
+	@Query("select u from Usuario u where u.dataAceite = null and u.justificativaNegativa = null")
 	public Iterable<Usuario> findUsuariosPendentesDeAceite();
 }

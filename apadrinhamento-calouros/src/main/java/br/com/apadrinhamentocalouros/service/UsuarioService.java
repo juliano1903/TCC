@@ -24,6 +24,15 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 	
+	public Usuario validarCadastro(Usuario usuario) {
+		if(usuario.getJustificativaNegativa() == null) {
+			usuario.setDataAceite(new Date());
+		} else {
+			usuario.setDataNegativa(new Date());
+		}
+		return usuarioRepository.save(usuario);
+	}
+	
 	public Iterable<Usuario> findUsuariosPendentesDeAceite() {
 		return usuarioRepository.findUsuariosPendentesDeAceite();
 	}

@@ -28,6 +28,11 @@ public class UsuarioApiRestController {
   public Usuario salvaUsuario(@RequestBody Usuario usuario) {
 	  return usuarioService.save(usuario);
   }
+  
+  @RequestMapping(value = "/aprova-cadastro", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+  public Usuario aprovaCadastro(@RequestBody Usuario usuario) {
+	  return usuarioService.validarCadastro(usuario);
+  }
 	
 	
 //	@Autowired
