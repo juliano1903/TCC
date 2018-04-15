@@ -51,6 +51,11 @@ public class UsuarioService {
 		return usuarioRepository.findUsuariosPendentesDeAceite();
 	}
 	
+	public Usuario login(Usuario usuario) {
+		return usuarioRepository.findByMatriculaAndSenha(usuario.getMatricula(), usuario.getSenha());
+	}
+	
+	
 //	public Usuario findByIdUsuario(Long idUsuario) {
 //		return usuarioRepository.findByIdUsuario(idUsuario);
 //	}

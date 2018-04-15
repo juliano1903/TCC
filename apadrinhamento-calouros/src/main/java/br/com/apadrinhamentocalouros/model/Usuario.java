@@ -33,7 +33,7 @@ public class Usuario {
 	@SequenceGenerator(sequenceName = "usuario_id_seq", allocationSize = 1, name ="usuario_seq")
 	public Long idUsuario;
 	
-	@Column(name="MATRICULA")
+	@Column(name="MATRICULA", unique=true)
 	public Long matricula;
 
 	@Column(name="EMAIL")
