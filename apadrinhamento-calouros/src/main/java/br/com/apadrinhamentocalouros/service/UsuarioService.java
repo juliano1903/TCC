@@ -14,6 +14,19 @@ public class UsuarioService {
 //	@Autowired
 //	private UsuarioSession usuarioSession;
 	
+	/*
+	 * Adicionar a escolha do curso np cadastro
+	 * 
+	 * Proxima semana
+	 * 
+	 * Vincular alunos - limitar alunos do seu curso Coord.
+	 * 
+	 * Enviar mensagem ao grupo do aluno
+	 * 
+	 * Marcar encontro
+	 * 
+	 * Aprimorar layout
+	 */
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
@@ -21,6 +34,7 @@ public class UsuarioService {
 		if(usuario.isCalouro()) {
 			usuario.setDataAceite(new Date());
 		}
+		
 		return usuarioRepository.save(usuario);
 	}
 	
