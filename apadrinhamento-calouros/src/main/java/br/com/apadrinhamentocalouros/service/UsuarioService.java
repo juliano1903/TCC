@@ -1,11 +1,17 @@
 package br.com.apadrinhamentocalouros.service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.collect.Iterables;
+
 import br.com.apadrinhamentocalouros.model.Usuario;
+import br.com.apadrinhamentocalouros.model.VinculoUsuario;
 import br.com.apadrinhamentocalouros.repository.UsuarioRepository;
 
 @Service
@@ -54,25 +60,18 @@ public class UsuarioService {
 	public Usuario login(Usuario usuario) {
 		return usuarioRepository.findByMatriculaAndSenha(usuario.getMatricula(), usuario.getSenha());
 	}
+
+	public Iterable<Usuario> findUsuariosPendentesVinculacao() {
+		List<Usuario> calourosList = findUsuariosCalourosPendentesVinculacao();
+		calourosList.addAll(findUsuariosVeteranosPendentesVinculacao());
+		return calourosList;
+	}
 	
+	public List<Usuario> findUsuariosCalourosPendentesVinculacao() {
+		return usuarioRepository.findUsuariosCalourosPendentesVinculacao();
+	}
 	
-//	public Usuario findByIdUsuario(Long idUsuario) {
-//		return usuarioRepository.findByIdUsuario(idUsuario);
-//	}
-//	
-//	public Usuario findByEmail(String email) {
-//		return usuarioRepository.findByEmail(email);
-//	}
-//
-//	public boolean logar(String email, String senha) {
-//		usuarioSession.setUsuario(usuarioRepository.findByEmailAndSenha(email, senha));
-//		if(usuarioSession.getUsuario() == null) {
-//			return false;
-//		}
-//		return true;
-//	}
-//	
-//	public void setUsuarioSessao (Usuario usuario) {
-//		usuarioSession.setUsuario(usuario);
-//	}
+	public List<Usuario> findUsuariosVeteranosPendentesVinculacao() {
+		return usuarioRepository.findUsuariosVeteranosPendentesVinculacao();
+	}
 }
