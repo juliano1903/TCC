@@ -72,7 +72,11 @@ public class Usuario {
 	public boolean isCalouro() {
 		LocalDate dataAtual = LocalDate.now();
 		calouro = DateUtils.dateToLocalDate(dataMatricula).isAfter(dataAtual.minusMonths(6));
-		dsPerfil = calouro ? "Calouro" : "Veterano";
+		if(idTipoUsuario != null && idTipoUsuario == 2) {
+			dsPerfil = "Coordenador";
+		} else {
+			dsPerfil = calouro ? "Calouro" : "Veterano";
+		}
 		return calouro;
 	}
 }
