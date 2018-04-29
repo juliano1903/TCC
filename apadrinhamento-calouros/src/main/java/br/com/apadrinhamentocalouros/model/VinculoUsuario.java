@@ -38,4 +38,6 @@ public class VinculoUsuario {
 	
 	public Date dataVinculacao;
 	
+	private Date dataDesvinculacao;
+	
 }

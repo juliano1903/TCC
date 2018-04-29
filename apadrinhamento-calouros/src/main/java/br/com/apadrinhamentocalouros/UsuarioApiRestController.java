@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.apadrinhamentocalouros.model.Mensagem;
 import br.com.apadrinhamentocalouros.model.Usuario;
 import br.com.apadrinhamentocalouros.model.VinculoUsuario;
+import br.com.apadrinhamentocalouros.service.MensagemService;
 import br.com.apadrinhamentocalouros.service.UsuarioService;
 import br.com.apadrinhamentocalouros.service.VinculoUsuarioService;
 
@@ -24,6 +26,9 @@ public class UsuarioApiRestController {
 	
 	@Autowired
 	private VinculoUsuarioService vinculoUsuarioService;
+	
+	@Autowired
+	private MensagemService mensagemService;
 
 	@RequestMapping(value = "/pendentes-aceite", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Usuario> findUsuariosPendentesDeAceite() {
@@ -50,10 +55,20 @@ public class UsuarioApiRestController {
 	public VinculoUsuario vincular(@RequestBody VinculoUsuario vinculoUsuario) {
 		return vinculoUsuarioService.save(vinculoUsuario);
 	}
+
+	@RequestMapping(value = "/grupo/mensagem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+	public VinculoUsuario enviarMensagemGrupo(@RequestBody Mensagem mensagem) {
+		return mensagemService.enviarMensagemGrupo(mensagem);
+	}
 	
 	@RequestMapping(value = "/pendentes-vinculacao", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Usuario> findUsuariosPendentesVinculacao() {
 		return usuarioService.findUsuariosPendentesVinculacao();
+	}
+	
+	@RequestMapping(value = "/vinculados", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<VinculoUsuario> findUsuariosVinculados() {
+		return vinculoUsuarioService.findUsuariosVinculados();
 	}
 	
 	@RequestMapping(value = "/calouro/pendentes-vinculacao", method = RequestMethod.GET, produces = "application/json")

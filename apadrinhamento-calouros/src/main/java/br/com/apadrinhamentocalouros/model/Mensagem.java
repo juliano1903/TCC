@@ -34,8 +34,6 @@ public class Mensagem {
 	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
 	public Usuario usuarioDestinatario;
 	
-//	public Data data;
-	
-	public String observacao;
+	public String mensagem;
 	
 }

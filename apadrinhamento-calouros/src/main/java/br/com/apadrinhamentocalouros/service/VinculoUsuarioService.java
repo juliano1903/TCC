@@ -31,4 +31,8 @@ public class VinculoUsuarioService {
 	public VinculoUsuario save (VinculoUsuario vinculoUsuario) {
 		return vinculoUsuarioRepository.save(vinculoUsuario);
 	}
+
+	public Iterable<VinculoUsuario> findUsuariosVinculados() {
+		return vinculoUsuarioRepository.findUsuariosVinculados();
+	}
 }
