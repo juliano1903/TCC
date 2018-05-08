@@ -9,4 +9,6 @@ import br.com.apadrinhamentocalouros.model.Usuario;
 public interface CursoRepository extends JpaRepository<Curso, Long>  {
 
 	public Iterable<Curso> findAllByOrderByNomeAsc();
+
+	public Iterable<Curso> findByIdCurso(Long idCurso);
 }

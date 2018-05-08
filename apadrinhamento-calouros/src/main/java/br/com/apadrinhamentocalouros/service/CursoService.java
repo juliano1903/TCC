@@ -19,4 +19,8 @@ public class CursoService {
 	public Iterable<Curso> findAll() {
 		return cursoRepository.findAllByOrderByNomeAsc();
 	}
+
+	public Iterable<Curso> findByIdCurso(Long idCurso) {
+		return cursoRepository.findByIdCurso(idCurso);
+	}
 }	

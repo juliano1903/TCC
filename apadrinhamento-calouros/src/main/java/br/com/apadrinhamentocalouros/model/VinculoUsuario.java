@@ -40,4 +40,6 @@ public class VinculoUsuario {
 	
 	private Date dataDesvinculacao;
 	
+	private String motivoDesvinculacao;
+	
 }

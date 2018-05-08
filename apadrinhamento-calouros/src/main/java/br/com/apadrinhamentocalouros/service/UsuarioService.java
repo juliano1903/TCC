@@ -53,25 +53,25 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 	
-	public Iterable<Usuario> findUsuariosPendentesDeAceite() {
-		return usuarioRepository.findUsuariosPendentesDeAceite();
+	public Iterable<Usuario> findUsuariosPendentesDeAceite(Long idCurso) {
+		return usuarioRepository.findUsuariosPendentesDeAceite(idCurso);
 	}
 	
 	public Usuario login(Usuario usuario) {
 		return usuarioRepository.findByMatriculaAndSenha(usuario.getMatricula(), usuario.getSenha());
 	}
 
-	public Iterable<Usuario> findUsuariosPendentesVinculacao() {
-		List<Usuario> calourosList = findUsuariosCalourosPendentesVinculacao();
-		calourosList.addAll(findUsuariosVeteranosPendentesVinculacao());
+	public Iterable<Usuario> findUsuariosPendentesVinculacao(Long idCurso) {
+		List<Usuario> calourosList = findUsuariosCalourosPendentesVinculacao(idCurso);
+		calourosList.addAll(findUsuariosVeteranosPendentesVinculacao(idCurso));
 		return calourosList;
 	}
 	
-	public List<Usuario> findUsuariosCalourosPendentesVinculacao() {
-		return usuarioRepository.findUsuariosCalourosPendentesVinculacao();
+	public List<Usuario> findUsuariosCalourosPendentesVinculacao(Long idCurso) {
+		return usuarioRepository.findUsuariosCalourosPendentesVinculacao(idCurso);
 	}
 	
-	public List<Usuario> findUsuariosVeteranosPendentesVinculacao() {
-		return usuarioRepository.findUsuariosVeteranosPendentesVinculacao();
+	public List<Usuario> findUsuariosVeteranosPendentesVinculacao(Long idCurso) {
+		return usuarioRepository.findUsuariosVeteranosPendentesVinculacao(idCurso);
 	}
 }

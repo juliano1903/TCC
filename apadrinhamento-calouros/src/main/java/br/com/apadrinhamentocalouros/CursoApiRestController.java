@@ -24,5 +24,10 @@ public class CursoApiRestController {
 	public Iterable<Curso> findAll() {
 		return cursoService.findAll();
 	}
+	
+	@RequestMapping(value = "/id/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<Curso> getById(@PathVariable Long idCurso) {
+		return cursoService.findByIdCurso(idCurso);
+	}
 
 }

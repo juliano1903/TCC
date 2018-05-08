@@ -30,9 +30,9 @@ public class UsuarioApiRestController {
 	@Autowired
 	private MensagemService mensagemService;
 
-	@RequestMapping(value = "/pendentes-aceite", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<Usuario> findUsuariosPendentesDeAceite() {
-		return usuarioService.findUsuariosPendentesDeAceite();
+	@RequestMapping(value = "/pendentes-aceite/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<Usuario> findUsuariosPendentesDeAceite(@PathVariable Long idCurso) {
+		return usuarioService.findUsuariosPendentesDeAceite(idCurso);
 	}
 
 	@RequestMapping(value = "/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
@@ -55,29 +55,35 @@ public class UsuarioApiRestController {
 	public VinculoUsuario vincular(@RequestBody VinculoUsuario vinculoUsuario) {
 		return vinculoUsuarioService.save(vinculoUsuario);
 	}
+	
+	@RequestMapping(value = "/desvincula", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+	public VinculoUsuario desvincular(@RequestBody VinculoUsuario vinculoUsuario) {
+		vinculoUsuarioService.desvincular(vinculoUsuario);
+		return vinculoUsuario;
+	}
 
 	@RequestMapping(value = "/grupo/mensagem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public VinculoUsuario enviarMensagemGrupo(@RequestBody Mensagem mensagem) {
 		return mensagemService.enviarMensagemGrupo(mensagem);
 	}
 	
-	@RequestMapping(value = "/pendentes-vinculacao", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<Usuario> findUsuariosPendentesVinculacao() {
-		return usuarioService.findUsuariosPendentesVinculacao();
+	@RequestMapping(value = "/pendentes-vinculacao/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<Usuario> findUsuariosPendentesVinculacao(@PathVariable Long idCurso) {
+		return usuarioService.findUsuariosPendentesVinculacao(idCurso);
 	}
 	
-	@RequestMapping(value = "/vinculados", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<VinculoUsuario> findUsuariosVinculados() {
-		return vinculoUsuarioService.findUsuariosVinculados();
+	@RequestMapping(value = "/vinculados/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<VinculoUsuario> findUsuariosVinculados(@PathVariable Long idCurso) {
+		return vinculoUsuarioService.findUsuariosVinculados(idCurso);
 	}
 	
-	@RequestMapping(value = "/calouro/pendentes-vinculacao", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<Usuario> findUsuariosCalourosPendentesVinculacao() {
-		return usuarioService.findUsuariosCalourosPendentesVinculacao();
+	@RequestMapping(value = "/calouro/pendentes-vinculacao/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<Usuario> findUsuariosCalourosPendentesVinculacao(@PathVariable Long idCurso) {
+		return usuarioService.findUsuariosCalourosPendentesVinculacao(idCurso);
 	}
 	
-	@RequestMapping(value = "/veterano/pendentes-vinculacao", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<Usuario> findUsuariosVeteranosPendentesVinculacao() {
-		return usuarioService.findUsuariosVeteranosPendentesVinculacao();
+	@RequestMapping(value = "/veterano/pendentes-vinculacao/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<Usuario> findUsuariosVeteranosPendentesVinculacao(@PathVariable Long idCurso) {
+		return usuarioService.findUsuariosVeteranosPendentesVinculacao(idCurso);
 	}
 }
