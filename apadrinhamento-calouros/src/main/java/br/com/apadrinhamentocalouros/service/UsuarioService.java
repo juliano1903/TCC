@@ -37,9 +37,9 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	public Usuario save(Usuario usuario) {
-		if(usuario.isCalouro()) {
+//		if(usuario.isCalouro()) {
 			usuario.setDataAceite(new Date());
-		}
+//		}
 		
 		return usuarioRepository.save(usuario);
 	}
