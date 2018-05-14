@@ -21,21 +21,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Evento {
+public class Estrutura {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "evento_seq" )
-	@SequenceGenerator(sequenceName = "evento_id_seq", allocationSize = 1, name ="evento_seq")
-	public Long idEvento;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estrutura_seq" )
+	@SequenceGenerator(sequenceName = "estrutura_id_seq", allocationSize = 1, name ="estrutura_seq")
+	public Long idEstrutura;
 	
 	public String nome;
-	
-	public Date dataEvento;
 	
 	public String descricao;
 	
 	public String local;
-	
-	public String duracao;
-
 }

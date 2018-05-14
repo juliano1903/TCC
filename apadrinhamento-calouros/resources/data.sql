@@ -2,9 +2,13 @@ insert into curso (id_curso, nome) values (curso_id_seq.nextval, 'Sistemas de In
 insert into curso (id_curso, nome) values (curso_id_seq.nextval, 'Ciência da Computação');
 insert into curso (id_curso, nome) values (curso_id_seq.nextval, 'Engenharia de Software');
 
-insert into evento (id_evento, data_evento, nome, descricao, local, ) values (evento_id_seq.nextval, (sysdate + 10), 'Evento de programação', 'Evento de programação para iniciantes', 'Faculdade de Informática');
-insert into evento (id_evento, data_evento, nome, descricao, local, ) values (evento_id_seq.nextval, (sysdate + 30), 'Evento de arquitetura', 'Evento de arquitetura para iniciantes', 'Faculdade de Engenharia');
-insert into evento (id_evento, data_evento, nome, descricao, local, ) values (evento_id_seq.nextval, (sysdate + 25), 'Prova E2B', 'Prova do programa S2B', 'Faculdade de Informática');
+insert into evento (id_evento, data_evento, nome, descricao, local) values (evento_id_seq.nextval, (sysdate + 10), 'Evento de programação', 'Evento de programação para iniciantes', 'Faculdade de Informática');
+insert into evento (id_evento, data_evento, nome, descricao, local ) values (evento_id_seq.nextval, (sysdate + 30), 'Evento de arquitetura', 'Evento de arquitetura para iniciantes', 'Faculdade de Engenharia');
+insert into evento (id_evento, data_evento, nome, descricao, local ) values (evento_id_seq.nextval, (sysdate + 25), 'Prova E2B', 'Prova do programa S2B', 'Faculdade de Informática');
+
+insert into estrutura (id_estrutura, nome, descricao, local) values (estrutura_id_seq.nextval, 'Biblioteca', 'Biblioteca da PUCRS', 'Prédio da biblioteca');
+insert into estrutura (id_estrutura, nome, descricao, local) values (estrutura_id_seq.nextval, 'FIJO', 'Central de estágios', 'Prédio da FIJO');
+
 
 insert into tipo_usuario (id_tipo_usuario, descricao) values (tipo_usuario_id_seq.nextval, 'Aluno');
 insert into tipo_usuario (id_tipo_usuario, descricao) values (tipo_usuario_id_seq.nextval, 'Coordenador');
