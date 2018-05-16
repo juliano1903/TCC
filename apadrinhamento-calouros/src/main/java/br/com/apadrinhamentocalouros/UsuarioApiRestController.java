@@ -77,6 +77,11 @@ public class UsuarioApiRestController {
 		return vinculoUsuarioService.findUsuariosVinculados(idCurso);
 	}
 	
+	@RequestMapping(value = "/vinculo-usuario/{idUsuario}", method = RequestMethod.GET, produces = "application/json")
+	public VinculoUsuario findVinculoUsuario(@PathVariable Long idUsuario) {
+		return vinculoUsuarioService.findVinculoUsuario(idUsuario);
+	}
+	
 	@RequestMapping(value = "/calouro/pendentes-vinculacao/{idCurso}", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Usuario> findUsuariosCalourosPendentesVinculacao(@PathVariable Long idCurso) {
 		return usuarioService.findUsuariosCalourosPendentesVinculacao(idCurso);

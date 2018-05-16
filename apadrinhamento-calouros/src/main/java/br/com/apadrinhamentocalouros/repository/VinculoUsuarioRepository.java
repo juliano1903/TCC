@@ -18,15 +18,23 @@ public interface VinculoUsuarioRepository extends JpaRepository<VinculoUsuario, 
 			+ "where vu.dataDesvinculacao = null "
 			+ "and vu.usuarioCalouro.idCurso = :idCurso "
 			+ "and vu.usuarioVeterano.idCurso = :idCurso ")
-	Iterable<VinculoUsuario> findUsuariosVinculados(@Param("idCurso") Long idCurso);
+	public Iterable<VinculoUsuario> findUsuariosVinculados(@Param("idCurso") Long idCurso);
 
 	@Modifying
 	@Query("update VinculoUsuario vu "
 			+ "set vu.dataDesvinculacao = :dataDesvinculacao,"
 			+ "vu.motivoDesvinculacao = :motivoDesvinculacao "
 			+ "where vu.idVinculoUsuario = :idVinculoUsuario ")
-	void atualizaDataDesvinculacao(@Param("dataDesvinculacao") Date dataDesvinculacao,
+	public void atualizaDataDesvinculacao(@Param("dataDesvinculacao") Date dataDesvinculacao,
 										     @Param("idVinculoUsuario") Long idVinculoUsuario, 
 										     @Param("motivoDesvinculacao") String motivoDesvinculacao);
+	
+	@Query("select vu from VinculoUsuario vu "
+			+ "join fetch vu.usuarioCalouro "
+			+ "join fetch vu.usuarioVeterano "
+			+ "where vu.dataDesvinculacao = null "
+			+ "and (vu.usuarioCalouro.idUsuario = :idUsuario "
+			+ "or vu.usuarioVeterano.idUsuario = :idUsuario) ")
+	public VinculoUsuario findVinculoUsuario(@Param("idUsuario") Long idUsuario);
 
 }

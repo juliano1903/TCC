@@ -42,6 +42,8 @@ public class Interacao {
 	
 	public Date data;
 	
+	public String titulo;
+	
 	public String descricao;
 	
 }

@@ -33,3 +33,6 @@ insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, dat
 values (usuario_id_seq.nextval, 9, 'neimar.osbel@gmail.com', 'Marco Mangan', '123456', sysdate, sysdate, 3, 2);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
 values (usuario_id_seq.nextval, 10, 'neimar.osbel@gmail.com', 'Afonso Salles', '123456', sysdate, sysdate, 3, 2);
+
+insert into vinculo_usuario(id_vinculo_usuario, id_usuario_calouro, id_usuario_veterano, data_vinculacao)
+values(vinculo_usuario_id_seq.nextval, 1, 2, sysdate);

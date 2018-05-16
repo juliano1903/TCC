@@ -45,4 +45,8 @@ public class VinculoUsuarioService {
 	public Iterable<VinculoUsuario> findUsuariosVinculados(Long idCurso) {
 		return vinculoUsuarioRepository.findUsuariosVinculados(idCurso);
 	}
+	
+	public VinculoUsuario findVinculoUsuario(Long idUsuario) {
+		return vinculoUsuarioRepository.findVinculoUsuario(idUsuario);
+	}
 }
