@@ -19,6 +19,12 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>  {
 	public Iterable<Usuario> findUsuariosPendentesDeAceite(@Param("idCurso") Long idCurso);
 	
 	public Usuario findByMatriculaAndSenha(Long matricula, String senha);
+	
+	@Query("select u from Usuario u "
+			+ "where u.idCurso = :idCurso "
+			+ "and u.idTipoUsuario = 2")	
+	public Usuario findCoordenadorByIdCurso(@Param("idCurso") Long idCurso);
+
 
 	@Query("select u from Usuario u where u.dataAceite != null "
 			+ "and u.dataMatricula > (sysdate - 180) "

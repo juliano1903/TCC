@@ -74,4 +74,8 @@ public class UsuarioService {
 	public List<Usuario> findUsuariosVeteranosPendentesVinculacao(Long idCurso) {
 		return usuarioRepository.findUsuariosVeteranosPendentesVinculacao(idCurso);
 	}
+
+	public Usuario findCoordenadorByIdCurso(Long idCurso) {
+		return usuarioRepository.findCoordenadorByIdCurso(idCurso);
+	}
 }

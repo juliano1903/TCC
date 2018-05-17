@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.apadrinhamentocalouros.model.Interacao;
 import br.com.apadrinhamentocalouros.model.Mensagem;
 import br.com.apadrinhamentocalouros.model.Usuario;
 import br.com.apadrinhamentocalouros.model.VinculoUsuario;
+import br.com.apadrinhamentocalouros.service.InteracaoService;
 import br.com.apadrinhamentocalouros.service.MensagemService;
 import br.com.apadrinhamentocalouros.service.UsuarioService;
 import br.com.apadrinhamentocalouros.service.VinculoUsuarioService;
@@ -29,6 +31,9 @@ public class UsuarioApiRestController {
 	
 	@Autowired
 	private MensagemService mensagemService;
+	
+	@Autowired
+	private InteracaoService interacaoService;
 
 	@RequestMapping(value = "/pendentes-aceite/{idCurso}", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Usuario> findUsuariosPendentesDeAceite(@PathVariable Long idCurso) {
@@ -39,6 +44,11 @@ public class UsuarioApiRestController {
 	public Usuario salvaUsuario(HttpServletRequest request, @RequestBody Usuario usuario) {
 	    String userAgent = request.getHeader("x-access-token");
 		return usuarioService.save(usuario);
+	}
+	
+	@RequestMapping(value = "/interacao/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+	public Interacao salvaInteracao(HttpServletRequest request, @RequestBody Interacao interacao) {
+		return interacaoService.save(interacao);
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")

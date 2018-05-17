@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,5 +46,8 @@ public class Interacao {
 	public String titulo;
 	
 	public String descricao;
+	
+	@Transient
+	public boolean coordenador;
 	
 }

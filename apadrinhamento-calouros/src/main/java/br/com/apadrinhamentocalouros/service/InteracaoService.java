@@ -18,7 +18,13 @@ public class InteracaoService {
 	@Autowired
 	private InteracaoRepository interacaoRepository;
 	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	public Interacao save(Interacao interacao) {
+		if(interacao.coordenador)
+			interacao.setUsuarioCoordenador(
+					usuarioService.findCoordenadorByIdCurso(interacao.getUsuarioCalouro().getIdCurso()));
 		return interacaoRepository.save(interacao);
 	}
 }	
