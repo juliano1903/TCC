@@ -42,4 +42,8 @@ public class VinculoUsuario {
 	
 	private String motivoDesvinculacao;
 	
+	private String nomeSalaChat;
+	
+	private String keySalaChat; 
+	
 }
