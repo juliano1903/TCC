@@ -28,9 +28,9 @@ values (usuario_id_seq.nextval, 6, 'neimar.osbel@gmail.com', 'Neimar Dell Osbel'
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
 values (usuario_id_seq.nextval, 7, 'neimar.osbel@gmail.com', 'Neimar Dell Osbel', '123456', sysdate, sysdate, 3, 1);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
-values (usuario_id_seq.nextval, 8, 'neimar.osbel@gmail.com', 'Ana Paula', '123456', sysdate, sysdate, 3, 2);
+values (usuario_id_seq.nextval, 8, 'neimar.osbel@gmail.com', 'Ana Paula', '123456', sysdate, sysdate, 1, 2);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
-values (usuario_id_seq.nextval, 9, 'neimar.osbel@gmail.com', 'Marco Mangan', '123456', sysdate, sysdate, 3, 2);
+values (usuario_id_seq.nextval, 9, 'neimar.osbel@gmail.com', 'Marco Mangan', '123456', sysdate, sysdate, 2, 2);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
 values (usuario_id_seq.nextval, 10, 'neimar.osbel@gmail.com', 'Afonso Salles', '123456', sysdate, sysdate, 3, 2);
 
