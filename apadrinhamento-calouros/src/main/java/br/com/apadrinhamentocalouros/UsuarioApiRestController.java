@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.apadrinhamentocalouros.model.Avaliacao;
 import br.com.apadrinhamentocalouros.model.Interacao;
 import br.com.apadrinhamentocalouros.model.Mensagem;
 import br.com.apadrinhamentocalouros.model.Usuario;
 import br.com.apadrinhamentocalouros.model.VinculoUsuario;
+import br.com.apadrinhamentocalouros.service.AvaliacaoService;
 import br.com.apadrinhamentocalouros.service.InteracaoService;
 import br.com.apadrinhamentocalouros.service.MensagemService;
 import br.com.apadrinhamentocalouros.service.UsuarioService;
@@ -31,6 +33,9 @@ public class UsuarioApiRestController {
 	
 	@Autowired
 	private MensagemService mensagemService;
+	
+	@Autowired
+	private AvaliacaoService avaliacaoService;
 	
 	@Autowired
 	private InteracaoService interacaoService;
@@ -100,5 +105,10 @@ public class UsuarioApiRestController {
 	@RequestMapping(value = "/veterano/pendentes-vinculacao/{idCurso}", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Usuario> findUsuariosVeteranosPendentesVinculacao(@PathVariable Long idCurso) {
 		return usuarioService.findUsuariosVeteranosPendentesVinculacao(idCurso);
+	}
+	
+	@RequestMapping(value = "/avaliacao/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+	public Avaliacao avaliar(@RequestBody Avaliacao avaliacao) {
+		return avaliacaoService.avaliar(avaliacao);
 	}
 }

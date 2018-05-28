@@ -36,6 +36,6 @@ public class Avaliacao {
 	
 	public String observacao;
 	
-	public Integer nota;
+	public Long avaliacao;
 
 }

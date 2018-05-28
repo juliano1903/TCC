@@ -1,16 +1,12 @@
 package br.com.apadrinhamentocalouros.service;
 
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.apadrinhamentocalouros.model.Curso;
 import br.com.apadrinhamentocalouros.model.Interacao;
-import br.com.apadrinhamentocalouros.model.Usuario;
-import br.com.apadrinhamentocalouros.repository.CursoRepository;
 import br.com.apadrinhamentocalouros.repository.InteracaoRepository;
-import br.com.apadrinhamentocalouros.repository.UsuarioRepository;
 
 @Service
 public class InteracaoService {
@@ -26,5 +22,9 @@ public class InteracaoService {
 			interacao.setUsuarioCoordenador(
 					usuarioService.findCoordenadorByIdCurso(interacao.getUsuarioCalouro().getIdCurso()));
 		return interacaoRepository.save(interacao);
+	}
+
+	public Iterable<Interacao> findAllByIdsAlunos(List<Long> idsAlunos) {
+		return interacaoRepository.findAllByIdsAlunos(idsAlunos);
 	}
 }	

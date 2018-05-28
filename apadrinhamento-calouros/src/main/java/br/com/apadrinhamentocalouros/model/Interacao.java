@@ -30,15 +30,15 @@ public class Interacao {
 	public Long idInteracao;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
+	@JoinColumn(name="id_usuario_veterano", insertable=false, updatable=false)
 	public Usuario usuarioVeterano;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
+	@JoinColumn(name="id_usuario_calouro", insertable=false, updatable=false)
 	public Usuario usuarioCalouro;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
+	@JoinColumn(name="id_usuario_coordenador", insertable=false, updatable=false)
 	public Usuario usuarioCoordenador;
 	
 	public Date data;
