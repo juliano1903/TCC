@@ -11,6 +11,9 @@ import br.com.apadrinhamentocalouros.model.Interacao;
 public interface InteracaoRepository extends JpaRepository<Interacao, Long>  {
 
 	@Query("select i from Interacao i "
+			+ "join fetch i.usuarioCalouro "
+			+ "join fetch i.usuarioVeterano "
+			+ "join fetch i.usuarioCoordenador "
 			+ "where i.usuarioVeterano.idUsuario in (:idsAlunos) "
 			+ "or i.usuarioCalouro.idUsuario in (:idsAlunos) ")
 	Iterable<Interacao> findAllByIdsAlunos(@Param("idsAlunos") List<Long> idsAlunos);
