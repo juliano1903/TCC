@@ -1,38 +1,17 @@
 package br.com.apadrinhamentocalouros.service;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.common.collect.Iterables;
-
 import br.com.apadrinhamentocalouros.model.Usuario;
-import br.com.apadrinhamentocalouros.model.VinculoUsuario;
 import br.com.apadrinhamentocalouros.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
 	
-//	@Autowired
-//	private UsuarioSession usuarioSession;
-	
-	/*
-	 * Adicionar a escolha do curso np cadastro
-	 * 
-	 * Proxima semana
-	 * 
-	 * Vincular alunos - limitar alunos do seu curso Coord.
-	 * 
-	 * Enviar mensagem ao grupo do aluno
-	 * 
-	 * Marcar encontro
-	 * 
-	 * Aprimorar layout
-	 */
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
@@ -77,5 +56,9 @@ public class UsuarioService {
 
 	public Usuario findCoordenadorByIdCurso(Long idCurso) {
 		return usuarioRepository.findCoordenadorByIdCurso(idCurso);
+	}
+
+	public Iterable<Usuario> findUsuariosAceitos(Long idCurso) {
+		return usuarioRepository.findUsuariosAceitos(idCurso);
 	}
 }

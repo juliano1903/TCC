@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import br.com.apadrinhamentocalouros.model.Usuario;
-import br.com.apadrinhamentocalouros.model.VinculoUsuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>  {
 
@@ -49,4 +48,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>  {
 			+ "and u.idTipoUsuario = 1 "
 			+ "and u.dataMatricula > (sysdate - 180)")
 	public List<Usuario> findAllUsuariosVeteranos();
+
+	@Query("select u from Usuario u "
+			+ "where u.dataAceite != null "
+			+ "and u.idCurso = :idCurso "
+			+ "and u.justificativaNegativa = null "
+			+ "and u.idTipoUsuario = 1")
+	public Iterable<Usuario> findUsuariosAceitos(@Param("idCurso") Long idCurso);
 }

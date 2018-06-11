@@ -45,6 +45,11 @@ public class UsuarioApiRestController {
 		return usuarioService.findUsuariosPendentesDeAceite(idCurso);
 	}
 
+	@RequestMapping(value = "/aceitos/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<Usuario> findUsuariosAceitos(@PathVariable Long idCurso) {
+		return usuarioService.findUsuariosAceitos(idCurso);
+	}
+
 	@RequestMapping(value = "/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public Usuario salvaUsuario(HttpServletRequest request, @RequestBody Usuario usuario) {
 	    String userAgent = request.getHeader("x-access-token");
@@ -68,7 +73,7 @@ public class UsuarioApiRestController {
 	
 	@RequestMapping(value = "/vincula", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public VinculoUsuario vincular(@RequestBody VinculoUsuario vinculoUsuario) {
-		return vinculoUsuarioService.save(vinculoUsuario);
+		return vinculoUsuarioService.vincular(vinculoUsuario);
 	}
 	
 	@RequestMapping(value = "/desvincula", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
