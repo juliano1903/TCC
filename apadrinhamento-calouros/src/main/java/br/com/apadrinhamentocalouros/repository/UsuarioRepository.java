@@ -29,14 +29,16 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>  {
 			+ "and u.dataMatricula > (sysdate - 180) "
 			+ "and u.idTipoUsuario = 1 "
 			+ "and u.idCurso = :idCurso "
-			+ "and u.idUsuario not in (select vu.usuarioCalouro.idUsuario from VinculoUsuario vu)")
+			+ "and u.idUsuario not in (select vu.usuarioCalouro.idUsuario from VinculoUsuario vu "
+			+ " 						where vu.dataDesvinculacao = null and vu.dataVinculacao != null)")
 	public List<Usuario> findUsuariosCalourosPendentesVinculacao(@Param("idCurso") Long idCurso);
 	
 	@Query("select u from Usuario u where u.dataAceite != null "
 			+ "and u.dataMatricula < (sysdate - 180) "
 			+ "and u.idTipoUsuario = 1 "
 			+ "and u.idCurso = :idCurso "
-			+ "and u.idUsuario not in (select vu.usuarioVeterano.idUsuario from VinculoUsuario vu)")
+			+ "and u.idUsuario not in (select vu.usuarioVeterano.idUsuario from VinculoUsuario vu "
+			+ "							where vu.dataDesvinculacao = null and vu.dataVinculacao != null)")
 	public List<Usuario> findUsuariosVeteranosPendentesVinculacao(@Param("idCurso") Long idCurso);
 
 	@Query("select u from Usuario u where u.dataAceite != null "

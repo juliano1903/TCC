@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import br.com.apadrinhamentocalouros.model.Usuario;
 import br.com.apadrinhamentocalouros.model.VinculoUsuario;
 
 public interface VinculoUsuarioRepository extends JpaRepository<VinculoUsuario, Long>  {
@@ -16,6 +15,7 @@ public interface VinculoUsuarioRepository extends JpaRepository<VinculoUsuario, 
 			+ "join fetch vu.usuarioCalouro "
 			+ "join fetch vu.usuarioVeterano "
 			+ "where vu.dataDesvinculacao = null "
+			+ "and vu.dataVinculacao != null "
 			+ "and vu.usuarioCalouro.idCurso = :idCurso "
 			+ "and vu.usuarioVeterano.idCurso = :idCurso ")
 	public Iterable<VinculoUsuario> findUsuariosVinculados(@Param("idCurso") Long idCurso);

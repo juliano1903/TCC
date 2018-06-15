@@ -1,5 +1,6 @@
 package br.com.apadrinhamentocalouros.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -49,5 +50,13 @@ public class Interacao {
 	
 	@Transient
 	public boolean coordenador;
+	
+	@Transient
+	public String dataInteracaoString;
+	
+	public String getDataInteracaoString() {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		return format.format(data);
+	}
 	
 }

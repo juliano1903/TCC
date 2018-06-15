@@ -21,6 +21,7 @@ public class VinculoUsuarioService {
 	public VinculoUsuario vincular(VinculoUsuario vinculoUsuario) {
 		usuarioService.save(vinculoUsuario.getUsuarioCalouro());
 		usuarioService.save(vinculoUsuario.getUsuarioVeterano());
+		vinculoUsuario.setDataVinculacao(new Date());
 		return vinculoUsuarioRepository.save(vinculoUsuario);
 	}
 
