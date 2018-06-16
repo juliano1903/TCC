@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.apadrinhamentocalouros.model.Avaliacao;
-import br.com.apadrinhamentocalouros.model.Interacao;
 import br.com.apadrinhamentocalouros.model.Mensagem;
 import br.com.apadrinhamentocalouros.model.Usuario;
 import br.com.apadrinhamentocalouros.model.VinculoUsuario;
 import br.com.apadrinhamentocalouros.service.AvaliacaoService;
-import br.com.apadrinhamentocalouros.service.InteracaoService;
 import br.com.apadrinhamentocalouros.service.MensagemService;
 import br.com.apadrinhamentocalouros.service.UsuarioService;
 import br.com.apadrinhamentocalouros.service.VinculoUsuarioService;
@@ -37,9 +35,6 @@ public class UsuarioApiRestController {
 	@Autowired
 	private AvaliacaoService avaliacaoService;
 	
-	@Autowired
-	private InteracaoService interacaoService;
-
 	@RequestMapping(value = "/pendentes-aceite/{idCurso}", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<Usuario> findUsuariosPendentesDeAceite(@PathVariable Long idCurso) {
 		return usuarioService.findUsuariosPendentesDeAceite(idCurso);
@@ -55,11 +50,6 @@ public class UsuarioApiRestController {
 	    String userAgent = request.getHeader("x-access-token");
 		return usuarioService.save(usuario);
 	}
-	
-	@RequestMapping(value = "/interacao/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
-	public Interacao salvaInteracao(HttpServletRequest request, @RequestBody Interacao interacao) {
-		return interacaoService.save(interacao);
-	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public Usuario login(@RequestBody Usuario usuario) {
@@ -71,17 +61,6 @@ public class UsuarioApiRestController {
 		return usuarioService.validarCadastro(usuario);
 	}
 	
-	@RequestMapping(value = "/vincula", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
-	public VinculoUsuario vincular(@RequestBody VinculoUsuario vinculoUsuario) {
-		return vinculoUsuarioService.vincular(vinculoUsuario);
-	}
-	
-	@RequestMapping(value = "/desvincula", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
-	public VinculoUsuario desvincular(@RequestBody VinculoUsuario vinculoUsuario) {
-		vinculoUsuarioService.desvincular(vinculoUsuario);
-		return vinculoUsuario;
-	}
-
 	@RequestMapping(value = "/grupo/mensagem", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public VinculoUsuario enviarMensagemGrupo(@RequestBody Mensagem mensagem) {
 		return mensagemService.enviarMensagemGrupo(mensagem);
@@ -95,11 +74,6 @@ public class UsuarioApiRestController {
 	@RequestMapping(value = "/vinculados/{idCurso}", method = RequestMethod.GET, produces = "application/json")
 	public Iterable<VinculoUsuario> findUsuariosVinculados(@PathVariable Long idCurso) {
 		return vinculoUsuarioService.findUsuariosVinculados(idCurso);
-	}
-	
-	@RequestMapping(value = "/vinculo-usuario/{idUsuario}", method = RequestMethod.GET, produces = "application/json")
-	public VinculoUsuario findVinculoUsuario(@PathVariable Long idUsuario) {
-		return vinculoUsuarioService.findVinculoUsuario(idUsuario);
 	}
 	
 	@RequestMapping(value = "/calouro/pendentes-vinculacao/{idCurso}", method = RequestMethod.GET, produces = "application/json")

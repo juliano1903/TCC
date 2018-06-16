@@ -10,7 +10,7 @@ public class Configuracao extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TestInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new AutenticacaoInterceptor()).addPathPatterns("/**");
     }
 	
 	public static void main(String[] args) {
