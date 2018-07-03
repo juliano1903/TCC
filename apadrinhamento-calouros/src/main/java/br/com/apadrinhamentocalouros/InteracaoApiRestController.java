@@ -28,12 +28,12 @@ public class InteracaoApiRestController {
 //	}
 	
 	@RequestMapping(value = "/{idUsuarioVeterano}/{idUsuarioCalouro}", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<Interacao> buscarTodas(@PathVariable Long idUsuarioVeterano, @PathVariable Long idUsuarioCalouro) {
+	public Iterable<Interacao> findAllByIdsAlunos(@PathVariable Long idUsuarioVeterano, @PathVariable Long idUsuarioCalouro) {
 		return interacaoService.findAllByIdsAlunos(Arrays.asList(idUsuarioVeterano, idUsuarioCalouro));
 	}
 	
 	@RequestMapping(value = "/salva", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
-	public Interacao salvaInteracao(HttpServletRequest request, @RequestBody Interacao interacao) {
+	public Interacao save(HttpServletRequest request, @RequestBody Interacao interacao) {
 		return interacaoService.save(interacao);
 	}
 }

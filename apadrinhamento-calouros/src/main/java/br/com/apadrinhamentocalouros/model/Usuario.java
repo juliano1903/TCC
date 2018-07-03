@@ -63,6 +63,9 @@ public class Usuario {
 	@Column(name="KEY_CHAT_COORDENADOR")
 	public String keySalaChatCoordenador;
 	
+	@Column(name="URL_IMAGEM_PERFIL")
+	public String urlImagemPerfil;
+	
 	@Transient
 	public boolean calouro;
 	

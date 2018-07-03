@@ -19,4 +19,8 @@ public class AvaliacaoService {
 		return avaliacaoRepository.save(avaliacao);
 	}
 
+	public Iterable<Avaliacao> findAll() {
+		return avaliacaoRepository.findAllByOrderByDataAvaliacaoDesc();
+	}
+
 }	

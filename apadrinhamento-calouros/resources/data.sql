@@ -13,10 +13,10 @@ insert into estrutura (id_estrutura, nome, descricao, local) values (estrutura_i
 insert into tipo_usuario (id_tipo_usuario, descricao) values (tipo_usuario_id_seq.nextval, 'Aluno');
 insert into tipo_usuario (id_tipo_usuario, descricao) values (tipo_usuario_id_seq.nextval, 'Coordenador');
 
-insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
-values (usuario_id_seq.nextval, 1, 'llara.juliano@gmail.com', 'Aluno Calouro', '123456', null, sysdate, 1, 1);
-insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
-values (usuario_id_seq.nextval, 2, 'llara.juliano@gmail.com', 'Aluno veterano', '123456', null, sysdate - 360, 1, 1);
+insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario, url_imagem_perfil)
+values (usuario_id_seq.nextval, 1, 'llara.juliano@gmail.com', 'Aluno Calouro', '123456', null, sysdate, 1, 1, 'assets/imgs/juliano.jpg');
+insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario, url_imagem_perfil)
+values (usuario_id_seq.nextval, 2, 'llara.juliano@gmail.com', 'Aluno veterano', '123456', null, sysdate - 360, 1, 1, 'assets/imgs/neimar.jpg');
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
 values (usuario_id_seq.nextval, 3, 'llara.juliano@gmail.com', 'Teste veterano', '123456', null, sysdate - 360, 2, 1);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
@@ -27,8 +27,8 @@ insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, dat
 values (usuario_id_seq.nextval, 6, 'neimar.osbel@gmail.com', 'Neimar Dell Osbel', '123456', null, sysdate, 3, 1);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
 values (usuario_id_seq.nextval, 7, 'neimar.osbel@gmail.com', 'Neimar Dell Osbel', '123456', null, sysdate, 3, 1);
-insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
-values (usuario_id_seq.nextval, 8, 'neimar.osbel@gmail.com', 'Coordenador', '123456', sysdate, sysdate, 1, 2);
+insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario, url_imagem_perfil)
+values (usuario_id_seq.nextval, 8, 'neimar.osbel@gmail.com', 'Coordenador', '123456', sysdate, sysdate, 1, 2, 'assets/imgs/avatardefault.png');
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)
 values (usuario_id_seq.nextval, 9, 'neimar.osbel@gmail.com', 'Marco Mangan', '123456', sysdate, sysdate, 2, 2);
 insert into usuario (id_usuario, matricula, email, nome, senha, data_aceite, data_matricula, id_curso, id_tipo_usuario)

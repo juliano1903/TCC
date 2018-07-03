@@ -33,4 +33,9 @@ public class VinculoApiRestController {
 	public VinculoUsuario findVinculoUsuario(@PathVariable Long idUsuario) {
 		return vinculoUsuarioService.findVinculoUsuario(idUsuario);
 	}
+	
+	@RequestMapping(value = "/vinculados/{idCurso}", method = RequestMethod.GET, produces = "application/json")
+	public Iterable<VinculoUsuario> findUsuariosVinculados(@PathVariable Long idCurso) {
+		return vinculoUsuarioService.findUsuariosVinculados(idCurso);
+	}
 }
