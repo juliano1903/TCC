@@ -72,6 +72,14 @@ public class Usuario {
 	@Transient
 	public String dsPerfil;
 	
+	public String getUrlImagemPerfil() {
+		if(urlImagemPerfil == null) {
+			return "assets/imgs/avatardefault.png";
+		} else {
+			return urlImagemPerfil;
+		}
+	}
+	
 	public boolean isCalouro() {
 		LocalDate dataAtual = LocalDate.now();
 		calouro = DateUtils.dateToLocalDate(dataMatricula).isAfter(dataAtual.minusMonths(6));
